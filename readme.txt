@@ -2,7 +2,7 @@
 Author URI: https://www.georgenicolaou.me/
 Plugin URI: https://www.georgenicolaou.me/plugins/ele-ui-color-scheme-restoration
 Donate link: 
-Contributors: 
+Contributors: lightbulbman (Atif Riaz)
 Tags: 
 Requires at least: 
 Tested up to: 
