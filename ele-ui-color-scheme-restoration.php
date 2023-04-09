@@ -5,13 +5,13 @@
  * @package       ELEUICOLOR
  * @author        George Nicolaou
  * @license       gplv2
- * @version       1.0.0
+ * @version       1.0.1
  *
  * @wordpress-plugin
  * Plugin Name:   Ele UI Color Scheme Restoration
  * Plugin URI:    https://www.georgenicolaou.me/plugins/ele-ui-color-scheme-restoration
  * Description:   A plugin that allows you to restore the Elementor UI back to the old colors
- * Version:       1.0.0
+ * Version:       1.0.1
  * Author:        George Nicolaou
  * Author URI:    https://www.georgenicolaou.me/
  * Text Domain:   ele-ui-color-scheme-restoration
@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'ELEUICOLOR_NAME',			'Ele UI Color Scheme Restoration' );
 
 // Plugin version
-define( 'ELEUICOLOR_VERSION',		'1.0.0' );
+define( 'ELEUICOLOR_VERSION',		'1.0.1' );
 
 // Plugin Root File
 define( 'ELEUICOLOR_PLUGIN_FILE',	__FILE__ );
@@ -83,7 +83,7 @@ function ele_ui_color_scheme_restoration_inline_styles() {
 	$css_path = plugin_dir_path( __FILE__ ) . 'core/includes/assets/css/';
   
 	// Get all CSS files in the directory and subdirectories
-	$css_files = glob( $css_path . '*.css' );
+	$css_files = glob( $css_path . '*.min.css' );
 	$css_files = array_merge( $css_files, glob( $css_path . '*/**.css' ) );
   
 	// Loop through each CSS file and inline its contents
@@ -92,70 +92,70 @@ function ele_ui_color_scheme_restoration_inline_styles() {
 	  echo '<style>' . $css_contents . '</style>';
 	}
   }
-  add_action( 'wp_head', 'ele_ui_color_scheme_restoration_inline_styles', 999 );
 
+add_action( 'wp_head', 'ele_ui_color_scheme_restoration_inline_styles', 999 );
+add_action( 'elementor/editor/after_enqueue_styles', 'customize_elementor_editor_styles' );
 
-  add_action( 'elementor/editor/after_enqueue_styles', 'customize_elementor_editor_styles' );
 function customize_elementor_editor_styles() {
     $custom_styles = '
  
-.elementor-panel #elementor-panel-header {
-background-color:#94003c;
-}
-.elementor-control-dynamic-switcher-wrapper {
-background-color:#ccccccc;
-}
-#elementor-panel-elements-search-area {
-    background-color: #e7e9ec;
-}
-.elementor-panel .elementor-element {
-background-color:#ffffff;
-}
-.elementor-panel {
-    background-color: #e7e9ec;
-}
-main#elementor-panel-content-wrapper * {
-    border-color: #cccccc;
-    color: black;
-}
-.elementor-control.elementor-control-separator-default {
-    border-top: solid 1px gray;
-    padding: 15px 20px;
-}
-.elementor-control-dimension-label {
-    color: black !important;
-}
-.elementor-panel #elementor-panel-saver-button-publish:not(.elementor-disabled) {
-    background-color: green;
-    color: white;
-}
-.elementor-button.e-primary {
-    background-color: green;
-    color: white;
-}
+    .elementor-panel #elementor-panel-header {
+    background-color:#94003c;
+    }
+    .elementor-control-dynamic-switcher-wrapper {
+    background-color:#ccccccc;
+    }
+    #elementor-panel-elements-search-area {
+        background-color: #e7e9ec;
+    }
+    .elementor-panel .elementor-element {
+    background-color:#ffffff;
+    }
+    .elementor-panel {
+        background-color: #e7e9ec;
+    }
+    main#elementor-panel-content-wrapper * {
+        border-color: #cccccc;
+        color: black;
+    }
+    .elementor-control.elementor-control-separator-default {
+        border-top: solid 1px gray;
+        padding: 15px 20px;
+    }
+    .elementor-control-dimension-label {
+        color: black !important;
+    }
+    .elementor-panel #elementor-panel-saver-button-publish:not(.elementor-disabled) {
+        background-color: green;
+        color: white;
+    }
+    .elementor-button.e-primary {
+        background-color: green;
+        color: white;
+    }
 
-#elementor-panel-saver-button-publish
-{
-	background-color: green;
-    color: white;
-}
+    #elementor-panel-saver-button-publish
+    {
+    	background-color: green;
+        color: white;
+    }
 
-#elementor-panel-saver-button-save-options:hover
-{
-	background-color: green;
-    color: white;
-}
+    #elementor-panel-saver-button-save-options:hover
+    {
+    	background-color: green;
+        color: white;
+    }
 
 
-button.e-primary:hover {
-    background-color: #e7e9ec;
-    color: white;
-}
-  .elementor-panel #elementor-panel-saver-button-publish:not(.elementor-disabled) {
-    -webkit-border-end: 1px solid #3A3F45;
-    border-inline-end:1px solid #3A3F45;
-} 
-  ';
+    button.e-primary:hover {
+        background-color: #e7e9ec;
+        color: white;
+    }
+      .elementor-panel #elementor-panel-saver-button-publish:not(.elementor-disabled) {
+        -webkit-border-end: 1px solid #3A3F45;
+        border-inline-end:1px solid #3A3F45;
+    } 
+      ';
     wp_add_inline_style( 'elementor-editor', $custom_styles );
 }
   

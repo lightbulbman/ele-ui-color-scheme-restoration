@@ -123,7 +123,6 @@ if ( ! class_exists( 'Ele_Ui_Color_Scheme_Restoration' ) ) :
 		private function includes() {
 			require_once ELEUICOLOR_PLUGIN_DIR . 'core/includes/classes/class-ele-ui-color-scheme-restoration-helpers.php';
 			require_once ELEUICOLOR_PLUGIN_DIR . 'core/includes/classes/class-ele-ui-color-scheme-restoration-settings.php';
-
 			require_once ELEUICOLOR_PLUGIN_DIR . 'core/includes/classes/class-ele-ui-color-scheme-restoration-run.php';
 		}
 
